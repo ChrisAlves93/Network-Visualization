@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Major Assignment 3</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <script src="network.js"></script>
+    <style>
+        #Paper_Title{
+            position: absolute;
+            top: 1vh;
+            left: 30vh;
+            font-size: 12pt;
+            font-family: sans-serif;
+        }
+        svg{
+            width: 70vw;
+            height: 70vw;
+        }
+    </style>
+
+</head>
+<body>
+<h1> Major Assignment 3 </h1>
+<div id="Paper_Title"></div>
+<script>
+  d3.json("publication_network.json")
+    .then(data => {
+      const svg = d3.select("body").append("svg").attr("viewBox", "0 0 1000 800");
+      console.log(data);
+      simulate(data, svg);    // defined in network.js
+    })
+    .catch(err => console.error("Failed to load JSON:", err));
+</script>
+
+</body>
+</html>
